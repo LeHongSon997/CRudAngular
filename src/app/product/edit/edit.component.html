@@ -1,0 +1,72 @@
+<form (ngSubmit)="edit()" [formGroup]="formEdit">
+    <legend>Product information</legend>
+    <button><a class="navbar-brand" routerLink="/product">Back to Product</a></button>
+    <table>
+<!--      <tr>-->
+<!--        <td>Id:</td>-->
+<!--        <td><input [(ngModel)]="product.id" name="id" readonly></td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>Name:</td>-->
+<!--        <input [(ngModel)]="product.name" #name="ngModel"-->
+<!--               minlength="6" name="name">-->
+<!--        <br>-->
+<!--        <p *ngIf="!name.valid && name.touched" style="color: red">* không được nhập dưới 6 ký tự</p>-->
+<!--        <br>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>Price:</td>-->
+<!--        <input type="number" [(ngModel)]="product.price" name="price" #price="ngModel"-->
+<!--               min="10"-->
+<!--        >-->
+<!--        <br>-->
+<!--        <p *ngIf="!price.valid" style="color: red">* không được nhở hơn không</p>-->
+<!--        <br>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>Img:</td>-->
+<!--        <input [(ngModel)]="product.img" name="img" #img="ngModel"-->
+<!--               required-->
+<!--        >-->
+<!--        <br>-->
+<!--        <p *ngIf="!img.valid" style="color: red">* không được để trống</p>-->
+<!--        <br>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>Status:</td>-->
+<!--        <input [(ngModel)]="product.status" name="status"><br>-->
+
+<!--      </tr>-->
+
+
+      <tr>
+        <td>Id:</td>
+        <td><input type="text" class="form-control" formControlName="id" ></td>
+      </tr>
+      <tr>
+        <td>Name:</td>
+        <td><input type="text" class="form-control" formControlName="name"></td>
+        <p *ngIf="!formEdit?.get('name')?.valid" style="color: red">* không được nhập dưới 6 ký tự</p>
+      </tr>
+      <tr>
+        <td>Price:</td>
+        <td><input type="text" class="form-control" formControlName="price"></td>
+      </tr>
+      <tr>
+        <td>Img:</td>
+        <td><input type="text" class="form-control" formControlName="img"></td>
+        <p *ngIf="formEdit?.get('img')?.hasError('required')" style="color: red">* không được để trống</p>
+        <p *ngIf="formEdit?.get('img')?.hasError('minLength')" style="color: red">* không được để dưới 10 ký tự</p>
+      </tr>
+      <tr>
+        <td>Status:</td>
+        <td><input type="text" class="form-control" formControlName="status"></td>
+      </tr>
+
+
+      <tr>
+        <td></td>
+        <td><button type="submit" class="btn btn-success">Save</button></td>
+      </tr>
+    </table>
+</form>

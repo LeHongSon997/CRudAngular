@@ -1,0 +1,24 @@
+<form >
+  <h3>Are you sure</h3>
+    <legend>Product information</legend>
+    <button><a class="navbar-brand" routerLink="/product">Back to Product</a></button>
+    <table class="table table-dark table-striped">
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Img</th>
+        <th>Status</th>
+      </tr>
+      <tr >
+        <td>{{product.id}}</td>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td><img src="{{product.img}}" width="250" height="200"></td>
+        <td>{{product.status}}</td>
+      </tr>
+      <tr>
+        <button type="button" class="btn btn-danger" (click)="delete(product.id)">Delete</button>
+      </tr>
+    </table>
+</form>

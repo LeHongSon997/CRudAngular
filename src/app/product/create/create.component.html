@@ -1,0 +1,33 @@
+<form (ngSubmit)="create()" [formGroup]="formCreate">
+    <legend>Product information</legend>
+    <button><a class="navbar-brand" routerLink="/product">Back to Product</a></button>
+    <table>
+      <tr>
+        <td>Id:</td>
+        <td><input type="text" class="form-control" formControlName="id" ></td>
+      </tr>
+      <tr>
+        <td>Name:</td>
+        <td><input type="text" class="form-control" formControlName="name"></td>
+        <p *ngIf="!formCreate?.get('name')?.valid" style="color: red">* không được nhập dưới 6 ký tự</p>
+      </tr>
+      <tr>
+        <td>Price:</td>
+        <td><input type="text" class="form-control" formControlName="price"></td>
+      </tr>
+      <tr>
+        <td>Img:</td>
+        <td><input type="text" class="form-control" formControlName="img"></td>
+        <p *ngIf="formCreate?.get('img')?.hasError('required')" style="color: red">* không được để trống</p>
+        <p *ngIf="formCreate?.get('img')?.hasError('minLength')" style="color: red">* không được để dưới 10 ký tự</p>
+      </tr>
+      <tr>
+        <td>Status:</td>
+        <td><input type="text" class="form-control" formControlName="status"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><button type="submit" class="btn btn-success">Save</button></td>
+      </tr>
+    </table>
+</form>
